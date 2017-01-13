@@ -1,6 +1,6 @@
 {
   "name": "soccerama.js",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Request wrapper and services for soccerama API",
   "authors": [
     "Alexander Morgunov <fxl@list.ru> (https://github.com/noveogroup-amorgunov)"
