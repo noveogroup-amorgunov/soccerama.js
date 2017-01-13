@@ -1,6 +1,8 @@
 # soccerama.js
 Request wrapper and services for soccerama API
 
+[![Build Status](https://travis-ci.org/noveogroup-amorgunov/soccerama.js.svg?branch=master)](https://travis-ci.org/noveogroup-amorgunov/soccerama.js)
+
 ## Installation
 
 ```js
