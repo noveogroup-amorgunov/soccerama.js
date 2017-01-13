@@ -57,7 +57,7 @@ class SocceramaRequest {
         const { statusCode } = response;
         // handle error
         if (error || statusCode < 200 || statusCode > 299) {
-          reject(new Error(`Failed to load page with status code: ${response.statusCode})`));
+          reject(new Error(`Failed to load page with status code: ${response.statusCode}`));
         }
         resolve(body);
       });
