@@ -1,7 +1,7 @@
 # soccerama.js
 Request wrapper and services for soccerama API
 
-[![Build Status](https://travis-ci.org/noveogroup-amorgunov/soccerama.js.svg?branch=master)](https://travis-ci.org/noveogroup-amorgunov/soccerama.js)
+[![Build Status](https://travis-ci.org/noveogroup-amorgunov/soccerama.js.svg?branch=master)](https://travis-ci.org/noveogroup-amorgunov/soccerama.js) [![downloads](https://img.shields.io/npm/dm/soccerama.js.svg)](https://www.npmjs.com/package/soccerama.js) [![version](https://img.shields.io/npm/v/soccerama.js.svg)]() [![license](https://img.shields.io/npm/l/soccerama.js.svg)]()
 
 ## Installation
 
