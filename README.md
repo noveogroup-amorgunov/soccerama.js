@@ -6,7 +6,7 @@ Request wrapper and services for soccerama API
 ## Installation
 
 ```js
-npm install 
+npm install soccerama.js --save
 ```
 
 ## Usage
