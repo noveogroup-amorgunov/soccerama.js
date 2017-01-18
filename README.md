@@ -189,7 +189,7 @@ service.getMatchById(691088, ['homeStats', 'awayStats'])
 });
 ```
 
-- Get matches by date range (YYYY-mm-dd) with home team stats
+- Get matches by date range (`YYYY-mm-dd`) with home team stats
 
 ```javascript
 service.getMatchesByDateRange({ start: '2017-01-10', end: '2017-01-17' }, ['homeStats'])
