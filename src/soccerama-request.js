@@ -30,9 +30,9 @@ class SocceramaRequest {
   /**
    * replace params from Object in passed string
    * ex. str: "match/{id}", params: {id:5} => "match/5"
-   * @param  {String} str
-   * @param  {Pbject} params
-   * @return {String}
+   * @param  {string} str
+   * @param  {object} params
+   * @return {string}
    */
   static replaceParams(str, params = {}) {
     for (const prop of Object.keys(params)) {
@@ -43,9 +43,9 @@ class SocceramaRequest {
 
   /**
    * get request to API with params
-   * @param  {String} url
-   * @param  {Object|false} params
-   * @return {Promise}
+   * @param  {string} url
+   * @param  {object|false} params
+   * @return {promise}
    */
   static request(url, params = false) {
     const paramsString = params ? SocceramaRequest.getParams(params) : '';
@@ -66,15 +66,15 @@ class SocceramaRequest {
 
   /**
    * public method for get data from api
-   * @param  {String} resource
-   * @param  {Object|null} options
-   * @return {Promise}
+   * @param  {string} endpoint
+   * @param  {object|null} options
+   * @return {promise}
    */
-  get(resource, options = {}) {
+  get(endpoint, options = {}) {
     return new Promise((resolve, reject) => {
       // add api_token to request
       const params = { api_token: this.apikey };
-      const url = this.baseUrl + SocceramaRequest.replaceParams(resource, options);
+      const url = this.baseUrl + SocceramaRequest.replaceParams(endpoint, options);
 
       if (Array.isArray(options.include) && options.include.length > 0) {
         params.include = options.include.join(',');
