@@ -156,7 +156,7 @@ For example, next method get video by match id from wao3iewu:
 ```javascript
 const SocceramaService = require('soccerama.js').SocceramaService;
   
-SocceramaService.prototype.getVideoById(id, include) {
+SocceramaService.prototype.getVideoByMatchId(id, include) {
   return this.fetch({
     // endpoint, see https://soccerama.pro/docs/1.2/videos
     endpoint: 'videos/match/{id}',
@@ -175,7 +175,7 @@ module.exports = SocceramaService;
 const MySocceramaService = require('path-to-override-molude');
 // create instance of SocceramaRequest and MySocceramaService
 
-mySocceramaService.getVideoById(691088).then(videos => ... );
+mySocceramaService.getVideoByMatchId(691088).then(videos => ... );
 ```
 
 ### Examples
