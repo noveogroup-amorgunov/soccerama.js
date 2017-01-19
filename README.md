@@ -10,15 +10,15 @@
     <img src="https://travis-ci.org/noveogroup-amorgunov/soccerama.js.svg?branch=master"
          alt="Travis Build Status" />
   </a>
-  <a href="https://www.npmjs.com/package/soccerama.j">
+  <a href="https://www.npmjs.com/package/soccerama.js">
     <img src="https://img.shields.io/npm/dm/soccerama.js.svg"
          alt="Downloads per month" />
   </a>
-  <a href="https://www.npmjs.com/package/soccerama.j">
+  <a href="https://www.npmjs.com/package/soccerama.js">
     <img src="https://img.shields.io/npm/v/soccerama.js.svg"
          alt="Version" />
   </a>
-  <a href="https://www.npmjs.com/package/soccerama.j">
+  <a href="https://www.npmjs.com/package/soccerama.js">
     <img src="https://img.shields.io/npm/l/soccerama.js.svg"
          alt="License" />
   </a>
