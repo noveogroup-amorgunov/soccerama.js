@@ -1,7 +1,28 @@
-# soccerama.js
-Request wrapper and services for soccerama API
+<h1 align="center">
+  soccerama.js
+  <br>
+</h1>
 
-[![Build Status](https://travis-ci.org/noveogroup-amorgunov/soccerama.js.svg?branch=master)](https://travis-ci.org/noveogroup-amorgunov/soccerama.js) [![downloads](https://img.shields.io/npm/dm/soccerama.js.svg)](https://www.npmjs.com/package/soccerama.js) [![version](https://img.shields.io/npm/v/soccerama.js.svg)]() [![license](https://img.shields.io/npm/l/soccerama.js.svg)]()
+<h4 align="center">Request wrapper and services for soccerama API</h4>
+
+<p align="center">
+  <a href="https://travis-ci.org/noveogroup-amorgunov/soccerama.js">
+    <img src="https://travis-ci.org/noveogroup-amorgunov/soccerama.js.svg?branch=master"
+         alt="Travis Build Status" />
+  </a>
+  <a href="https://www.npmjs.com/package/soccerama.j">
+    <img src="https://img.shields.io/npm/dm/soccerama.js.svg"
+         alt="Downloads per month" />
+  </a>
+  <a href="https://www.npmjs.com/package/soccerama.j">
+    <img src="https://img.shields.io/npm/v/soccerama.js.svg"
+         alt="Version" />
+  </a>
+  <a href="https://www.npmjs.com/package/soccerama.j">
+    <img src="https://img.shields.io/npm/l/soccerama.js.svg"
+         alt="License" />
+  </a>
+</p>
 
 ## Installation
 
