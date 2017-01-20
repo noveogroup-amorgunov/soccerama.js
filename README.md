@@ -22,6 +22,9 @@
     <img src="https://img.shields.io/npm/l/soccerama.js.svg"
          alt="License" />
   </a>
+  <a href="https://codeclimate.com/github/noveogroup-amorgunov/soccerama.js">
+    <img src="https://codeclimate.com/github/noveogroup-amorgunov/soccerama.js/badges/gpa.svg" />
+  </a>
 </p>
 
 ## Installation
