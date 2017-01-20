@@ -1,7 +1,28 @@
-# soccerama.js
-Request wrapper and services for soccerama API
+<h1 align="center">
+  soccerama.js
+  <br>
+</h1>
 
-[![Build Status](https://travis-ci.org/noveogroup-amorgunov/soccerama.js.svg?branch=master)](https://travis-ci.org/noveogroup-amorgunov/soccerama.js) [![downloads](https://img.shields.io/npm/dm/soccerama.js.svg)](https://www.npmjs.com/package/soccerama.js) [![version](https://img.shields.io/npm/v/soccerama.js.svg)]() [![license](https://img.shields.io/npm/l/soccerama.js.svg)]()
+<h4 align="center">Request wrapper and services for soccerama API</h4>
+
+<p align="center">
+  <a href="https://travis-ci.org/noveogroup-amorgunov/soccerama.js">
+    <img src="https://travis-ci.org/noveogroup-amorgunov/soccerama.js.svg?branch=master"
+         alt="Travis Build Status" />
+  </a>
+  <a href="https://www.npmjs.com/package/soccerama.js">
+    <img src="https://img.shields.io/npm/dm/soccerama.js.svg"
+         alt="Downloads per month" />
+  </a>
+  <a href="https://www.npmjs.com/package/soccerama.js">
+    <img src="https://img.shields.io/npm/v/soccerama.js.svg"
+         alt="Version" />
+  </a>
+  <a href="https://www.npmjs.com/package/soccerama.js">
+    <img src="https://img.shields.io/npm/l/soccerama.js.svg"
+         alt="License" />
+  </a>
+</p>
 
 ## Installation
 
@@ -9,19 +30,21 @@ Request wrapper and services for soccerama API
 npm install soccerama.js --save
 ```
 
-## Usage
+## Usage SocceramaRequest
+`SocceramaRequest` provide one public method - `get`. Using this method you can send request by endpoint.
+
 
 ```javascript
 
-const SocceramaRequest = require('../src/index').SocceramaRequest;
+const SocceramaRequest = require('soccerama.js').SocceramaRequest;
 
 const request = new SocceramaRequest({ apikey: 'YOUR_API_KEY' });
 
 // send request
-request.get(resource, options).then(data => console.log(data));
+request.get(endpoint, options).then(data => console.log(data));
 ```
 
-### `resource`
+### `endpoint`
 *Type: String*
 
 Pathname to request url like `"matches"`, `"players"`, `"countries/{id}"` and so on. 
@@ -90,4 +113,108 @@ request.get('unavailable_resource/{id}', { id: 772841 }).then(data => {
   console.error(error);
 });
 
+```
+
+## Usage SocceramaService
+`SocceramaService` provide methods for getting data by easiest way.
+
+```javascript
+const SocceramaRequest = require('soccerama.js').SocceramaRequest;
+const SocceramaService = require('soccerama.js').SocceramaService;
+
+const socceramaRequest = new SocceramaRequest({ apikey: 'YOUR_API_KEY' });
+const service = new SocceramaService({ socceramaRequest, eagerLoading: true });
+
+// e.g. get match by id
+service.getMatchById(691088, ['homeStats', 'awayStats']).then(data => ... );
+```
+
+You can pass `eagerLoading` option to constructor - if it's true, then all available includes will be loaded auto. For example, `competition` can include `['country', 'currentSeason', 'seasons']` and all of them will be include to request.
+
+But `eagerLoading` not load related includes (like `matches.homeStats`). You can pass this option to method (see example). All available options will be concat with your includes (without dublicates).
+
+```javascript
+service.getSeasonById(651, ['matches.homeTeam']);
+```
+
+### Available methods
+
+All of them return object or array with data (which not wrapped in `data` object).
+
+- `getCompetitions(include)`
+- `getCompetitionById(id, include)`
+- `getSeasons(include)`
+- `getSeasonById(id, include)`
+- `getMatchesBySeasonId(id, include)`
+- `getTeamsBySeasonId(id, include)`
+- `getTeamsById(id, include)`
+- `getStandingById(id)`
+- `getMatchById(id, include)`
+- `getMatchesByTeamIdAndSeasonId({ teamId, seasonId }, include)`
+- `getMatchesByDateRange({ start, end }, include)` Date in `YYYY-mm-dd` format
+
+### Create own method
+
+You can create own method for get some data. Overall construction looks like following:
+
+```javascript
+getTeamsBySeasonId(id, include) {
+  return this.fetch({
+    endpoint: 'teams/season/{id}',
+    params: { id, include },
+    get: result => result.data,
+    availableIncludes: ['players', 'venue', 'coach', 'chairman']
+  });
+}
+```
+- `endpoint` - endpoint string
+- `params` - this params will replace corresponding values in endpoint (in SocceramaRequest instance).
+- `get` - function, which handle result
+- `availableIncludes` - includes, which load auto (if `eagerLoading` is `true`)
+
+For example, next method get video by match id from wao3iewu:
+
+```javascript
+const SocceramaService = require('soccerama.js').SocceramaService;
+  
+SocceramaService.prototype.getVideoByMatchId(id, include) {
+  return this.fetch({
+    // endpoint, see https://soccerama.pro/docs/1.2/videos
+    endpoint: 'videos/match/{id}',
+    // params for SocceramaRequest
+    params: { id, include },
+    // filter videos and return from `wao3iewu`
+    get: result => result.data.filter(video => video.url.indexOf('wao3iewu') !== -1)
+    // availableIncludes: [] - not available includes
+  });
+}
+
+module.exports = SocceramaService;
+
+// ...
+
+const MySocceramaService = require('path-to-override-molude');
+// create instance of SocceramaRequest and MySocceramaService
+
+mySocceramaService.getVideoByMatchId(691088).then(videos => ... );
+```
+
+### Examples
+
+- Get match by id with stats
+
+```javascript
+service.getMatchById(691088, ['homeStats', 'awayStats'])
+.then((result) => {
+  console.log(result);
+});
+```
+
+- Get matches by date range (`YYYY-mm-dd`) with home team stats
+
+```javascript
+service.getMatchesByDateRange({ start: '2017-01-10', end: '2017-01-17' }, ['homeStats'])
+.then((result) => {
+  console.log(result);
+});
 ```
