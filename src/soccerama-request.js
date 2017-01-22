@@ -13,7 +13,7 @@ class SocceramaRequest {
     this.baseUrl = `${host}${version}/`;
 
     if (!apikey) {
-      throw new Error('API key is required params');
+      throw new Error('`apikey` is required params');
     }
   }
 
@@ -28,7 +28,7 @@ class SocceramaRequest {
   }
 
   /**
-   * replace params from Object in passed string
+   * replace params from Object to passed string
    * ex. str: "match/{id}", params: {id:5} => "match/5"
    * @param  {string} str
    * @param  {object} params
