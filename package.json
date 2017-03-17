@@ -5,7 +5,7 @@
   "authors": [
     "Alexander Morgunov <fxl@list.ru> (https://github.com/noveogroup-amorgunov)"
   ],
-  "main": "srt/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha ./test/**/*.spec.js"
   },
@@ -18,10 +18,10 @@
   },
   "license": "ISC",
   "dependencies": {
-    "chai": "^3.5.0",
     "request": "^2.79.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "mocha": "^3.2.0",
     "eslint": "^3.5.0",
     "eslint-config-airbnb": "^11.1.0",
